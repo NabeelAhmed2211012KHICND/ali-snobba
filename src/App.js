@@ -4,18 +4,18 @@ import  Navbar from './Components/Navbar';
 import Cart from './Pages/cart/Cart';
 import ProductList from './Components/ProductList';
 import ProductDetails from './Components/ProductDetails';
+import Thanks from './Components/Thanks';
 function App() {
   return (
     <div className="App">
 
       <Router>
         <Navbar />
-      {/* //  <ProductList/> */}
-      
         <Routes>
         <Route path="/" element={<ProductList/>} />
         <Route path="/cart" element={<Cart/>} />
         <Route path="/details/:productID" element={<ProductDetails/>} />
+        <Route path="/thanks" element={<Thanks/>} />
         </Routes>
       </Router>
     </div>

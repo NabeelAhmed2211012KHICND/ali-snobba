@@ -1,29 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import Cartdata from '../../Components/Cartdata';
+
 
 function Cart() {
+  const [data, setData] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  useEffect(() => {
+    // let del = 0;
+    fetch("http://localhost:9000/cart/getcart")
+      .then((response) => response.json())
+      .then((result) => {
+        setData(result);
+        // result.forEach(e => {
+        //   del += e.price;
+        //   setTotalPrice(del);
+        // });
+      });
+  }, []);
+
+  
   return (
-    <div className='product-items-container'>
-      <div className='product-item-row'>
-        <div className='product-image'>
-          <img src='https://raw.githubusercontent.com/jeff-lent/Alisnobba/main/Capstone/ActualRubyRubySlippers.jpg' alt='product' />
-        </div>
-        <div className='product-title'>
-          <h1>Product Name</h1>
-          <p>Product Description</p>
-        </div>
-        <div className='product-count'>
-          <i className='fa fa-minus minus'></i>
-          <input type='text' className='count-input' placeholder='2' />
-          <i className='fa fa-plus plus'></i>
-        </div>
-        <div className='price'>
-          <h3>$34876</h3>
-        </div>
-        <div className='description'>
-          <p>Product Details</p>
-        </div>
-        <button className='button'>Add to Cart</button>
-      </div>
+    <div>
+      {data.length && data.map((d) => {
+        return (
+          <>
+          <Cartdata probs={d} />
+          
+          </>
+        );
+      })}
+<Link to="/"><button>Return to shopping</button></Link>
+<Link to="/thanks"><button>Check Out</button></Link>
     </div>
   );
 }

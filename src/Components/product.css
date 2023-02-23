@@ -23,7 +23,7 @@
     width: 110px;
     background-color: rgb(83, 205, 205);
     border: 1px;
-    
+    cursor: pointer;
     }
     .product-count{
         display: flex;
@@ -33,4 +33,25 @@
     .box{margin: 10px;
         width: 50px;
     text-align: center;
+    }
+    .product-items-container{
+
+        
+        height: 154px;
+        /* position: relative; */
+        width: 50%;
+        margin-left: 325px;
+        padding-right: 52px;
+        padding-left: 52px;
+        /* padding: 21px; */
+        /* padding-left: 21px; */
+        left: 145px;
+        border-radius: 20px;
+margin-top: 5px;
+        border: 1px solid #000;
+
+    }
+    .main{
+border-radius: 5px solid;
+
     }

@@ -1,12 +1,22 @@
 .product-row{
-
 display: flex;
-align-items: center;
-justify-content:space-between
-
+justify-content: center;
+padding: 15px;
+}
+.details{
+    text-align: left;
+    padding: 20px;
+}
+.details p{
+    width: 80%;
+    text-align: justify;
+}
+.price{
+    font-size: large;
 }
 .image img{
-
 height: 300px;
-width: 300;
+width: 300px;
+border: solid rgb(235, 138, 138) 1px;
+padding: 3px;
 }

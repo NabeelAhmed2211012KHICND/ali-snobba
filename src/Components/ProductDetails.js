@@ -1,7 +1,20 @@
 import React,{useEffect, useState} from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import './ProductDetail.css'
 const ProductDetails = () => {
+    const navigate=useNavigate();
+    const cart=()=>{
+        const data = {
+            productId:item.id,
+            quantity:quantity,
+            price:quantity*item.price
+        };
+        fetch("http://localhost:9000/cart/addcart", {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: { 'Content-type': 'application/json; charset= UTF-8', }
+        }).then(()=>navigate("/cart"));
+    }
     const [item,setItem] = useState({});
     const param = useParams();
     useEffect(()=>{
@@ -20,15 +33,15 @@ const ProductDetails = () => {
     }
     return (
         <div className="product-main">
+            <h1>*** Single Product Page ***</h1>
             <div class="product-row">
              <div className="image">  <img src={item.imageLink}/>  </div>
-                <div className=" details">   
+                <div className="details">   
                 
                 <h1>{item.name}</h1>
-                <h1>{item.shortDiscription}</h1>
                 <p>{item.longDiscription}</p> 
                  
-                <h1>Price : {item.price}</h1>
+                <h1 className="price">Price: {item.price}</h1>
                 <div className='product-count a'>
                     <div>
                     <i className='fa fa-minus minus' onClick={d_quantity}></i>
@@ -38,7 +51,7 @@ const ProductDetails = () => {
                     
                 </div>
                 <div className='button'>
-                    <button>+ add to cart</button>
+                    <button onClick={cart}>+ add to cart</button>
                 </div>
 
                 </div>
